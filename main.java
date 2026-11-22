@@ -12,7 +12,9 @@ public class Main {
             System.out.print(regularQueue.remove() + " ");
         }
 
-        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+        //
+        PriorityQueue<Integer> priorityQueue = 
+            new PriorityQueue<>(Collections.reverseOrder());
         priorityQueue.add(5);
         priorityQueue.add(1);
         priorityQueue.add(3);
