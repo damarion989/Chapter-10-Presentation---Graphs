@@ -1,61 +1,25 @@
-#include <stdio.h>
+import java.util.*;
 
-void merge(int numbers[], int left, int middle, int right) {
-    int temp[20];
-    int i = left;
-    int j = middle + 1;
-    int k = 0;
+public class Main {
+    public static void main(String[] args) {
+        Queue<Integer> regularQueue = new LinkedList<>();
+        regularQueue.add(5);
+        regularQueue.add(1);
+        regularQueue.add(3);
 
-    while (i <= middle && j <= right) {
-        if (numbers[i] < numbers[j]) {
-            temp[k++] = numbers[i++];
-        } else {
-            temp[k++] = numbers[j++];
+        System.out.print("Regular queue: ");
+        while (!regularQueue.isEmpty()) {
+            System.out.print(regularQueue.remove() + " ");
+        }
+
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+        priorityQueue.add(5);
+        priorityQueue.add(1);
+        priorityQueue.add(3);
+
+        System.out.print("\nPriority queue: ");
+        while (!priorityQueue.isEmpty()) {
+            System.out.print(priorityQueue.remove() + " ");
         }
     }
-
-    while (i <= middle) {
-        temp[k++] = numbers[i++];
-    }
-
-    while (j <= right) {
-        temp[k++] = numbers[j++];
-    }
-
-    for (i = left, k = 0; i <= right; i++, k++) {
-        numbers[i] = temp[k];
-    }
-}
-
-void mergeSort(int numbers[], int left, int right) {
-    if (left < right) {
-        int middle = (left + right) / 2;
-
-        mergeSort(numbers, left, middle);
-        mergeSort(numbers, middle + 1, right);
-        merge(numbers, left, middle, right);
-    }
-}
-
-int main() {
-    int numbers[] = {8, 3, 6, 2, 7, 1};
-    int size = 6;
-
-    printf("Before sorting: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", numbers[i]);
-    }
-
-    mergeSort(numbers, 0, size - 1);
-
-    printf("\nAfter sorting:  ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", numbers[i]);
-    }
-
-    printf("\n");
-    return 0;
-}
-
-    return 0;
 }
